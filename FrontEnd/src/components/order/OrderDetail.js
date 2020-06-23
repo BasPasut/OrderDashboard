@@ -1,5 +1,4 @@
 import React from 'react'
-import Menu from '../style/Menu'
 import styled from "styled-components";
 
 function OrderDetail() {

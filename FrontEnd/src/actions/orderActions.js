@@ -5,13 +5,10 @@ export const createOrder = (order) => {
         const orderObj = {
             customerName: order.customerName,
             date: order.date,
-            menu: [{
-                name: order.menu.name,
-                addOn_name: order.menu.addOn_name,
-                addOn_price: order.menu.addOn_price
-            }]
+            menu: order.menu
+            
         }
-        Axios.post(``, {orderObj}).then(() => {
+        Axios.post(`Add link here pi`, {orderObj}).then(() => {
             dispatch({
                 type: 'CREATE_ORDER_SUCCESS',
                 orderObj

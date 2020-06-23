@@ -3,14 +3,13 @@ const initialState = {
         {
             customerName: '',
             date: '',
-            orders: [{
-                menuName: '',
+            menu: [{
+                name: '',
+                quantity:'',
+                addOn_name: '',
                 price: '',
-                addOn: [{
-                    addOn_name: '',
-                    addOn_price: ''
+                description: ''
                 }]
-            }]
         }
 }
 
