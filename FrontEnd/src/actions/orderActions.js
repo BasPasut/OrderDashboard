@@ -1,11 +1,16 @@
-import { Order } from "../components/order/Order"
-
-import Order from '../components/order/Order'
 import Axios from "axios"
 
 export const createOrder = (order) => {
     return (dispatch) => {
-        const orderObj = new Order(order.customerName, order.date, order.orders)
+        const orderObj = {
+            customerName: order.customerName,
+            date: order.date,
+            menu: [{
+                name: order.menu.name,
+                addOn_name: order.menu.addOn_name,
+                addOn_price: order.menu.addOn_price
+            }]
+        }
         Axios.post(``, {orderObj}).then(() => {
             dispatch({
                 type: 'CREATE_ORDER_SUCCESS',
