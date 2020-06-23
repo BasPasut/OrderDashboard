@@ -45,7 +45,7 @@ class OrderCreator extends Component {
 
     onSubmitHandler = e => {
         e.preventDefault();
-        this.props.createOrder(this.setState)
+        this.props.createOrder(this.state)
     }
 
     render() {
@@ -64,8 +64,7 @@ class OrderCreator extends Component {
                     </div>                  
                     <button onClick={this.onAddMenu}>Add new menu</button>
                     <MenuInputs menu={menu}/>
-                    <div className="input-field">                    
-                        <input type="submit" value="Submit" />   
+                    <div className="input-field">             
                         <button className="btn pink lighten-1 z-depth-0">Create</button>
                     </div>
                 </form>

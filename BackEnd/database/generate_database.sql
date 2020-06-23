@@ -1,43 +1,42 @@
-drop database if exists order_dashboard;
-create database order_dashboard;
-use order_dashboard;
-create table customer (
-  customer_id int auto_increment,
-  customer_fname varchar(30) not null,
-  customer_lname varchar(30) not null,
-  customer_tel varchar(10),
-  customer_location varchar(120),
-  primary key(customer_id)
+drop database if exists OrderDashboard;
+create database OrderDashboard;
+use OrderDashboard;
+create table Customer (
+  customerId int auto_increment,
+  customerName varchar(30) not null,
+  customerTel varchar(10),
+  customerLocation varchar(120),
+  primary key(customerId)
 );
 
-create table orders (
-  order_id int auto_increment,
-  order_date date,
-  customer_id int,
-  primary key (order_id),
-  foreign key (customer_id) references customer (customer_id) on
+create table Orders (
+  orderId int auto_increment,
+  orderDate date,
+  customerId int,
+  primary key (orderId),
+  foreign key (customerId) references Customer (customerId) on
     delete cascade on
     update cascade
 );
 
-create table menu (
-  menu_id int auto_increment,
-  menu_name varchar(30),
-  menu_price int,
-  order_id int,
-  primary key (menu_id),
-  foreign key (order_id) references orders (order_id) on
+create table Menu (
+  menuId int auto_increment,
+  menuName varchar(30),
+  menuPrice int,
+  orderId int,
+  primary key (menuId),
+  foreign key (orderId) references Orders (orderId) on
     delete cascade on
     update cascade
 );
 
-create table addon (
-  addon_id int auto_increment,
-  addon_name varchar(30),
-  addon_price int,
-  menu_id int,
-  primary key (addon_id),
-  foreign key (menu_id) references menu (menu_id) on
+create table Addon (
+  addonId int auto_increment,
+  addonName varchar(30),
+  addonPrice int,
+  menuId int,
+  primary key (addonId),
+  foreign key (menuId) references Menu (menuId) on
     delete cascade on
     update cascade
 );

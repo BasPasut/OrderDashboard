@@ -8,16 +8,26 @@ export const createOrder = (order) => {
             menu: order.menu
             
         }
-        Axios.post(`Add link here pi`, {orderObj}).then(() => {
-            dispatch({
-                type: 'CREATE_ORDER_SUCCESS',
-                orderObj
-            })
-        }).catch((error) => {
-            dispatch({
-                type: 'CREATE_ORDER_FAILED',
-                error
-            })
-        })
+        Axios({
+            method: 'post',
+            url: '/api/order/add-order',
+            headers: {}, 
+            data: orderObj
+          }).then((res) => {
+              console.log(res)
+          });
+
+        // Axios.post('/api/order/add-order', {orderObj}).then((res) => {
+        //     console.log(res.data)
+        //     dispatch({
+        //         type: 'CREATE_ORDER_SUCCESS',
+        //         orderObj
+        //     })
+        // }).catch((error) => {
+        //     dispatch({
+        //         type: 'CREATE_ORDER_FAILED',
+        //         error
+        //     })
+        // })
     }
 }
