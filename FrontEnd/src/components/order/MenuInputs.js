@@ -1,6 +1,14 @@
 import React from 'react';
+import {DropdownButton, Dropdown} from 'react-bootstrap'
+import {useState} from 'react'
 
 const MenuInputs = ({menu}) => {
+
+    const [value,setValue]=useState('Select Menu');
+    const onSelectHandler = (e) => {      
+        setValue(e)   
+    }
+
     return (
         menu.map((val,idx) => {
             let menuName_Id = `name-${idx}`, 
@@ -11,7 +19,15 @@ const MenuInputs = ({menu}) => {
             return(
                 <div key={idx}>
                     <label htmlFor={menuName_Id}>{`Menu #${idx+1}`}</label>
-                    <input type="text" name={menuName_Id} data-id={idx} id={menuName_Id} value={menu[idx].name} className="name"></input>
+                    <DropdownButton name={menuName_Id} 
+                    data-id={idx} id={menuName_Id} 
+                    value={value} 
+                    className="name" 
+                    title={value}
+                    onSelect={onSelectHandler}>
+                        <Dropdown.Item eventKey="Tok">Tok</Dropdown.Item>
+                        <Dropdown.Item eventKey="Chicken">Chicken</Dropdown.Item>
+                    </DropdownButton>
 
                     <label htmlFor={quantity_Id}>{`Quantity`}</label>
                     <input type="number" name={quantity_Id} data-id={idx} id={quantity_Id} value={menu[idx].quantity} className="quantity"></input>
