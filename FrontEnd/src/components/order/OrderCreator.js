@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import {createOrder} from '../../actions/orderActions'
 import MenuInputs from './MenuInputs'
+import {Button, Form} from 'react-bootstrap'
 
 class OrderCreator extends Component {
     state = {
@@ -52,7 +53,7 @@ class OrderCreator extends Component {
         let {customerName, date, menu} = this.state
         return (
             <div className="container">
-                <form onSubmit={this.onSubmitHandler} onChange={this.onChangeHandler} className="white">
+                <Form onSubmit={this.onSubmitHandler} onChange={this.onChangeHandler} className="white">
                     <h5 className="grey-text text-darken-3">Create Order</h5>
                     <div className="input-field">
                         <label htmlFor="title">Customer name</label>
@@ -62,12 +63,12 @@ class OrderCreator extends Component {
                         <label htmlFor="text">Date</label>
                         <input type="text" name="date" id="date" value={date}/>
                     </div>                  
-                    <button onClick={this.onAddMenu}>Add new menu</button>
+                    <Button variant="dark" onClick={this.onAddMenu}>Add new menu</Button>
                     <MenuInputs menu={menu}/>
                     <div className="input-field">             
-                        <button className="btn pink lighten-1 z-depth-0">Create</button>
+                        <Button variant="success">Create</Button>
                     </div>
-                </form>
+                </Form>
             </div>   
         )
     }
