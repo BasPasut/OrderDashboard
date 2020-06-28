@@ -8,7 +8,8 @@ import styled from 'styled-components'
 class OrderCreator extends Component {
     state = {
         customerName: '',
-        date: '',
+        time: '',
+        location: '',
         menu: [
             {
                 name: '',
@@ -63,7 +64,7 @@ class OrderCreator extends Component {
     }
 
     render() {
-        let { customerName, date, menu } = this.state
+        let { customerName, time, location, menu } = this.state
         
         return (
             <div className="container">
@@ -73,9 +74,15 @@ class OrderCreator extends Component {
                         <label htmlFor="title">Customer name</label>
                         <input type="text" name="customerName" id="customerName" value={customerName} />
                     </div>
+
                     <div className="input-field">
-                        <label htmlFor="text">Date</label>
-                        <input type="text" name="date" id="date" value={date} />
+                        <label htmlFor="title">Time</label>
+                        <input type="text" name="time" id="time" value={time} />
+                    </div>
+
+                    <div className="input-field">
+                        <label htmlFor="title">Location</label>
+                        <input type="text" name="location" id="location" value={location} />
                     </div>
                     <Button variant="dark" onClick={this.onAddMenu}>Add new menu</Button>
                     {                 
