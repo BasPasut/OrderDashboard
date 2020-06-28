@@ -17,8 +17,7 @@ export const createOrder = (order) => {
         //   }).then((res) => {
         //       console.log(res)
         //   });
-
-        Axios.post('/api/order/add-order', {orderObj}).then((res) => {
+        Axios.post('/api/order/add-order', orderObj).then((res) => {
             console.log(res.data)
             dispatch({
                 type: 'CREATE_ORDER_SUCCESS',
@@ -35,7 +34,7 @@ export const createOrder = (order) => {
 
 // export const getOrderList = () => {
 //     return (dispatch) => {
-//         Axios.get()
+//         Axios.get('http://localhost:5000/api/order/get-order-list')
 //     }
 // }
 

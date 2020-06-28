@@ -68,7 +68,7 @@ class OrderCreator extends Component {
         
         return (
             <div className="container">
-                <Form onSubmit={this.onSubmitHandler} onChange={this.onChangeHandler} className="white">
+                <Form onChange={this.onChangeHandler} className="white">
                     <h5 className="grey-text text-darken-3">Create Order</h5>
                     <div className="input-field">
                         <label htmlFor="title">Customer name</label>
@@ -132,7 +132,7 @@ class OrderCreator extends Component {
                         )
                     }
                     <div className="input-field">
-                        <Button variant="success">Create</Button>
+                        <Button variant="success" onClick={this.onSubmitHandler}>Create</Button>
                     </div>
                 </Form>
             </div>

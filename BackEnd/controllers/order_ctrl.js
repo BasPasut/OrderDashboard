@@ -11,3 +11,14 @@ exports.addOrder = async function (req, res) {
         res.send(error)
     }
 }
+
+exports.getOrderList = async function (req, res) {
+    try {
+        results = await orderModel.getOrderList()
+        res.send(results)
+    } catch (error) {
+        console.log(error)
+        res.status(500)
+        res.send(error)
+    }
+}

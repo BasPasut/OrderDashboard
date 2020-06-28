@@ -69,7 +69,7 @@ async function addOrderAfterCheckCustomer(conn, customerId, menus) {
                     menus.forEach(async menu => {
                         var sql = "insert into menu (menuName, menuPrice, quantity, description, orderId)\
                                 value (?, ?, ?, ?, ?)"
-                        var params = [menu['menuName'], menu['menuPrice'], menu['quantity'], menu['description'], res.insertId]
+                        var params = [menu['name'], menu['price'], menu['quantity'], menu['description'], res.insertId]
                         await conn.query(sql, params, async (err, res) => {
                             if (err != null) {
                                 reject ({
@@ -107,4 +107,33 @@ async function addOrderAfterCheckCustomer(conn, customerId, menus) {
         }
     })
 
+}
+
+exports.getOrderList = async function () {
+    return new Promise(async function (resolve, reject) {
+        connection.getConnection(async function (err, conn) {
+            try {
+                var sql = "select C.customerName, C.customerTel, C.customerLocation, M.menuName, M.menuPrice, M.quantity, M.description from Orders O inner join Customer C inner join Menu M \
+                where O.customerId = C.customerId and O.orderId = M.orderId"
+                var params = [new Date()]
+                await conn.query(sql, async (err, res) => {
+                    if (err != null) {
+                        reject ({
+                            result: "err",
+                            error: err
+                        })
+                    }
+                    var results = JSON.parse(JSON.stringify(res))
+                    resolve({ result: results })
+                })
+            } catch (error) {
+                reject({
+                    result: "err",
+                    error: error
+                })
+            } finally {
+                conn.release();
+            }
+        });
+    })
 }

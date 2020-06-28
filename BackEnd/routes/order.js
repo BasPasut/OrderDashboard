@@ -7,5 +7,6 @@ router.get('/', function (req, res, next) {
 });
 
 router.post('/add-order', orderCtrl.addOrder)
+router.get('/get-order-list', orderCtrl.getOrderList)
 
 module.exports = router
